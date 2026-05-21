@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { posts, getPostBySlug } from "@/data/posts";
 import { formatDate } from "@/lib/utils";
@@ -30,14 +31,25 @@ export default function BlogPostPage({ params }: Props) {
   return (
     <>
       {/* Hero banner */}
-      <div
-        className={`bg-gradient-to-br ${post.coverColor} pt-28 pb-12 relative overflow-hidden`}
-      >
+      <div className="pt-28 pb-12 relative overflow-hidden" style={{ minHeight: 280 }}>
+        {/* Background: SVG cover image or gradient fallback */}
+        {post.image ? (
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            className="object-cover object-left-top"
+            priority
+            sizes="100vw"
+          />
+        ) : (
+          <div className={`absolute inset-0 bg-gradient-to-br ${post.coverColor}`} />
+        )}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 40% 60%, rgba(0,0,0,0.3) 0%, transparent 70%)",
+              "linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.3) 100%)",
           }}
         />
         <div className="section-container relative z-10 max-w-3xl">

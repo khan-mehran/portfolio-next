@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Clock, ArrowRight, Calendar } from "lucide-react";
 import Badge from "@/components/ui/Badge";
@@ -88,14 +89,25 @@ export default function BlogPage() {
                 }}
               >
                 {/* Cover */}
-                <div
-                  className={`h-40 bg-gradient-to-br ${post.coverColor} relative overflow-hidden flex-shrink-0`}
-                >
+                <div className="h-48 relative overflow-hidden flex-shrink-0 rounded-t-2xl">
+                  {post.image ? (
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover object-left-top"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  ) : (
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${post.coverColor}`}
+                    />
+                  )}
                   <div
                     className="absolute inset-0"
                     style={{
                       background:
-                        "radial-gradient(circle at 30% 50%, rgba(255,255,255,0.05) 0%, transparent 60%)",
+                        "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%)",
                     }}
                   />
                   <div className="absolute bottom-4 left-5">
@@ -105,8 +117,8 @@ export default function BlogPage() {
                           key={tag}
                           className="text-xs px-2 py-0.5 rounded-full font-medium"
                           style={{
-                            background: "rgba(0,0,0,0.3)",
-                            color: "rgba(255,255,255,0.85)",
+                            background: "rgba(0,0,0,0.45)",
+                            color: "rgba(255,255,255,0.9)",
                             backdropFilter: "blur(8px)",
                           }}
                         >

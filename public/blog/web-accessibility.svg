@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080d0a"/>
+      <stop offset="100%" style="stop-color:#0f1a12"/>
+    </linearGradient>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#41b883"/><stop offset="100%" style="stop-color:#3dd68c"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#41b883"/><stop offset="100%" style="stop-color:#00c9ff"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="10" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- WCAG checklist panel (right) -->
+  <g transform="translate(680, 55)">
+    <rect x="0" y="0" width="470" height="530" rx="16" fill="rgba(12,20,14,0.95)" stroke="rgba(65,184,131,0.2)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="470" height="44" rx="16" fill="rgba(65,184,131,0.08)"/>
+    <text x="235" y="28" text-anchor="middle" fill="rgba(65,184,131,0.5)" font-size="13" font-family="monospace">WCAG 2.2 Checklist</text>
+
+    <!-- Perceivable -->
+    <text x="20" y="72" fill="rgba(65,184,131,0.7)" font-size="12" font-family="monospace" font-weight="700">PERCEIVABLE</text>
+    <rect x="20" y="80" width="430" height="1" fill="rgba(65,184,131,0.15)"/>
+
+    <circle cx="36" cy="104" r="9" fill="rgba(65,184,131,0.2)" stroke="rgba(65,184,131,0.5)" stroke-width="1.5"/>
+    <text x="36" y="109" text-anchor="middle" fill="#41b883" font-size="10" font-family="monospace">✓</text>
+    <text x="56" y="109" fill="rgba(138,185,155,0.8)" font-size="12" font-family="monospace">Alt text for all images (WCAG 1.1.1)</text>
+
+    <circle cx="36" cy="130" r="9" fill="rgba(65,184,131,0.2)" stroke="rgba(65,184,131,0.5)" stroke-width="1.5"/>
+    <text x="36" y="135" text-anchor="middle" fill="#41b883" font-size="10" font-family="monospace">✓</text>
+    <text x="56" y="135" fill="rgba(138,185,155,0.8)" font-size="12" font-family="monospace">Color contrast ratio ≥ 4.5:1 (AA)</text>
+
+    <circle cx="36" cy="156" r="9" fill="rgba(65,184,131,0.2)" stroke="rgba(65,184,131,0.5)" stroke-width="1.5"/>
+    <text x="36" y="161" text-anchor="middle" fill="#41b883" font-size="10" font-family="monospace">✓</text>
+    <text x="56" y="161" fill="rgba(138,185,155,0.8)" font-size="12" font-family="monospace">Captions for video/audio content</text>
+
+    <!-- Operable -->
+    <text x="20" y="192" fill="rgba(61,214,140,0.7)" font-size="12" font-family="monospace" font-weight="700">OPERABLE</text>
+    <rect x="20" y="200" width="430" height="1" fill="rgba(61,214,140,0.15)"/>
+
+    <circle cx="36" cy="224" r="9" fill="rgba(61,214,140,0.2)" stroke="rgba(61,214,140,0.5)" stroke-width="1.5"/>
+    <text x="36" y="229" text-anchor="middle" fill="#3dd68c" font-size="10" font-family="monospace">✓</text>
+    <text x="56" y="229" fill="rgba(138,185,155,0.8)" font-size="12" font-family="monospace">Full keyboard navigation support</text>
+
+    <circle cx="36" cy="250" r="9" fill="rgba(61,214,140,0.2)" stroke="rgba(61,214,140,0.5)" stroke-width="1.5"/>
+    <text x="36" y="255" text-anchor="middle" fill="#3dd68c" font-size="10" font-family="monospace">✓</text>
+    <text x="56" y="255" fill="rgba(138,185,155,0.8)" font-size="12" font-family="monospace">Skip navigation link (focus:first)</text>
+
+    <circle cx="36" cy="276" r="9" fill="rgba(61,214,140,0.2)" stroke="rgba(61,214,140,0.5)" stroke-width="1.5"/>
+    <text x="36" y="281" text-anchor="middle" fill="#3dd68c" font-size="10" font-family="monospace">✓</text>
+    <text x="56" y="281" fill="rgba(138,185,155,0.8)" font-size="12" font-family="monospace">No seizure-triggering content</text>
+
+    <!-- Understandable -->
+    <text x="20" y="312" fill="rgba(0,201,255,0.7)" font-size="12" font-family="monospace" font-weight="700">UNDERSTANDABLE</text>
+    <rect x="20" y="320" width="430" height="1" fill="rgba(0,201,255,0.15)"/>
+
+    <circle cx="36" cy="344" r="9" fill="rgba(0,201,255,0.15)" stroke="rgba(0,201,255,0.4)" stroke-width="1.5"/>
+    <text x="36" y="349" text-anchor="middle" fill="#00c9ff" font-size="10" font-family="monospace">✓</text>
+    <text x="56" y="349" fill="rgba(138,185,155,0.8)" font-size="12" font-family="monospace">Descriptive form labels &amp; error msgs</text>
+
+    <circle cx="36" cy="370" r="9" fill="rgba(0,201,255,0.15)" stroke="rgba(0,201,255,0.4)" stroke-width="1.5"/>
+    <text x="36" y="375" text-anchor="middle" fill="#00c9ff" font-size="10" font-family="monospace">✓</text>
+    <text x="56" y="375" fill="rgba(138,185,155,0.8)" font-size="12" font-family="monospace">Consistent navigation across pages</text>
+
+    <!-- Robust -->
+    <text x="20" y="410" fill="rgba(65,184,131,0.6)" font-size="12" font-family="monospace" font-weight="700">ROBUST</text>
+    <rect x="20" y="418" width="430" height="1" fill="rgba(65,184,131,0.12)"/>
+
+    <circle cx="36" cy="442" r="9" fill="rgba(65,184,131,0.2)" stroke="rgba(65,184,131,0.4)" stroke-width="1.5"/>
+    <text x="36" y="447" text-anchor="middle" fill="#41b883" font-size="10" font-family="monospace">✓</text>
+    <text x="56" y="447" fill="rgba(138,185,155,0.8)" font-size="12" font-family="monospace">ARIA roles, labels &amp; live regions</text>
+
+    <circle cx="36" cy="468" r="9" fill="rgba(65,184,131,0.2)" stroke="rgba(65,184,131,0.4)" stroke-width="1.5"/>
+    <text x="36" y="473" text-anchor="middle" fill="#41b883" font-size="10" font-family="monospace">✓</text>
+    <text x="56" y="473" fill="rgba(138,185,155,0.8)" font-size="12" font-family="monospace">Semantic HTML5 structure</text>
+
+    <!-- Score badge -->
+    <rect x="310" y="488" width="140" height="28" rx="14" fill="rgba(65,184,131,0.15)" stroke="rgba(65,184,131,0.4)" stroke-width="1"/>
+    <text x="380" y="507" text-anchor="middle" fill="#41b883" font-size="13" font-family="monospace" font-weight="700">WCAG 2.2 AA ✓</text>
+  </g>
+
+  <!-- Tag pill -->
+  <rect x="100" y="90" width="140" height="30" rx="15" fill="rgba(65,184,131,0.15)" stroke="rgba(65,184,131,0.4)" stroke-width="1"/>
+  <text x="170" y="110" text-anchor="middle" fill="#41b883" font-size="12" font-family="'Inter',sans-serif" font-weight="600">Accessibility</text>
+
+  <!-- Heading -->
+  <text x="100" y="200" fill="#e8f5ee" font-size="54" font-family="'Inter',sans-serif" font-weight="900" letter-spacing="-2">Web A11y</text>
+  <text x="100" y="260" fill="url(#g1)" font-size="54" font-family="'Inter',sans-serif" font-weight="900" letter-spacing="-2">in React</text>
+  <text x="100" y="314" fill="rgba(138,185,155,0.65)" font-size="30" font-family="'Inter',sans-serif" font-weight="600">Building for Everyone</text>
+
+  <!-- Feature list -->
+  <text x="110" y="375" fill="#41b883" font-size="15" font-family="monospace">▸  Semantic HTML &amp; ARIA</text>
+  <text x="110" y="401" fill="#3dd68c" font-size="15" font-family="monospace">▸  Keyboard navigation patterns</text>
+  <text x="110" y="427" fill="#00c9ff" font-size="15" font-family="monospace">▸  Focus management in SPAs</text>
+  <text x="110" y="453" fill="rgba(65,184,131,0.7)" font-size="15" font-family="monospace">▸  Screen reader testing</text>
+
+  <!-- Divider -->
+  <line x1="100" y1="484" x2="520" y2="484" stroke="rgba(65,184,131,0.2)" stroke-width="1"/>
+
+  <!-- Author -->
+  <circle cx="116" cy="524" r="18" fill="url(#g1)"/>
+  <text x="116" y="530" text-anchor="middle" fill="white" font-size="13" font-family="'Inter',sans-serif" font-weight="700">MK</text>
+  <text x="145" y="519" fill="#e8f5ee" font-size="14" font-family="'Inter',sans-serif" font-weight="600">Mehran Khan</text>
+  <text x="145" y="537" fill="rgba(138,185,155,0.7)" font-size="12" font-family="'Inter',sans-serif">12 min read  ·  Dec 2023</text>
+</svg>
