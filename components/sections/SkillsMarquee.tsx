@@ -1,9 +1,29 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { techIcons } from "@/data/skills";
+import { techStack } from "@/data/skills";
 
-function IconCard({ name, icon }: { name: string; icon: string }) {
+const iconMap: Record<string, string> = {
+  "React.js": "⚛️",
+  "Next.js": "▲",
+  TypeScript: "TS",
+  "Tailwind CSS": "🌊",
+  "Node.js": "⬡",
+  PostgreSQL: "🐘",
+  MongoDB: "🍃",
+  GraphQL: "◈",
+  Redux: "⚙️",
+  Docker: "🐳",
+  AWS: "☁️",
+  Figma: "🎨",
+  Git: "⑂",
+  Vercel: "▲",
+  "Express.js": "∞",
+  "REST APIs": "🔗",
+};
+
+function IconCard({ name }: { name: string }) {
+  const icon = iconMap[name] ?? "◆";
   return (
     <motion.div
       whileHover={{ y: -4, scale: 1.06 }}
@@ -41,11 +61,10 @@ function IconCard({ name, icon }: { name: string; icon: string }) {
 }
 
 export default function SkillsMarquee() {
-  const doubled = [...techIcons, ...techIcons];
+  const doubled = [...techStack, ...techStack];
 
   return (
     <section className="relative py-20 overflow-hidden">
-      {/* Section header */}
       <div className="section-container mb-10 text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -68,42 +87,33 @@ export default function SkillsMarquee() {
         </motion.h2>
       </div>
 
-      {/* Fade edges */}
       <div
         className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to right, var(--bg), transparent)",
-        }}
+        style={{ background: "linear-gradient(to right, var(--bg), transparent)" }}
       />
       <div
         className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to left, var(--bg), transparent)",
-        }}
+        style={{ background: "linear-gradient(to left, var(--bg), transparent)" }}
       />
 
-      {/* Row 1 — left */}
       <div className="flex items-center gap-4 mb-4" style={{ overflow: "hidden" }}>
         <div
           className="flex items-center gap-4 animate-marquee"
           style={{ animationDuration: "35s" }}
         >
-          {doubled.map((t, i) => (
-            <IconCard key={`r1-${i}`} {...t} />
+          {doubled.map((name, i) => (
+            <IconCard key={`r1-${i}`} name={name} />
           ))}
         </div>
       </div>
 
-      {/* Row 2 — right */}
       <div className="flex items-center gap-4" style={{ overflow: "hidden" }}>
         <div
           className="flex items-center gap-4 animate-marquee-reverse"
           style={{ animationDuration: "40s" }}
         >
-          {doubled.slice().reverse().map((t, i) => (
-            <IconCard key={`r2-${i}`} {...t} />
+          {[...doubled].reverse().map((name, i) => (
+            <IconCard key={`r2-${i}`} name={name} />
           ))}
         </div>
       </div>

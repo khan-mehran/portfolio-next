@@ -2,14 +2,18 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import Badge from "@/components/ui/Badge";
 import FloatingGraphic from "@/components/FloatingGraphic";
 import { FadeUp } from "@/components/animations/AnimatedText";
 import { projects, type ProjectCategory } from "@/data/projects";
 
 type FilterType = "All" | ProjectCategory;
-const filters: FilterType[] = ["All", "Frontend", "Backend", "Full Stack"];
+const filters: { label: string; value: FilterType }[] = [
+  { label: "All", value: "All" },
+  { label: "UI Projects", value: "ui" },
+  { label: "React.js", value: "react" },
+];
 const PAGE_SIZE = 6;
 
 const projectGradients = [
@@ -20,6 +24,12 @@ const projectGradients = [
   "from-[#41b883]/15 to-[#3dd68c]/10",
   "from-[#1a6e4a]/20 to-[#41b883]/10",
 ];
+
+const categoryLabel: Record<ProjectCategory, string> = {
+  ui: "UI Project",
+  react: "React.js",
+  fullstack: "Full Stack",
+};
 
 export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] = useState<FilterType>("All");
@@ -65,8 +75,8 @@ export default function ProjectsPage() {
               className="section-subheading max-w-xl mx-auto"
               style={{ color: "var(--text-secondary)" }}
             >
-              Everything I&apos;ve built — from side projects and experiments to
-              production applications.
+              Enterprise and government web applications I&apos;ve led and delivered —
+              from national portals to smart city dashboards.
             </p>
           </FadeUp>
         </div>
@@ -82,25 +92,24 @@ export default function ProjectsPage() {
               border: "1px solid var(--border)",
             }}
           >
-            {filters.map((f) => (
+            {filters.map(({ label, value }) => (
               <button
-                key={f}
-                onClick={() => handleFilter(f)}
+                key={value}
+                onClick={() => handleFilter(value)}
                 className="relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
-                style={{ color: activeFilter === f ? "#ffffff" : "var(--text-secondary)" }}
+                style={{ color: activeFilter === value ? "#ffffff" : "var(--text-secondary)" }}
               >
-                {activeFilter === f && (
+                {activeFilter === value && (
                   <motion.span
                     layoutId="filter-pill"
                     className="absolute inset-0 rounded-lg"
                     style={{
-                      background:
-                        "linear-gradient(135deg, #41b883 0%, #2d9768 100%)",
+                      background: "linear-gradient(135deg, #41b883 0%, #2d9768 100%)",
                     }}
                     transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
                   />
                 )}
-                <span className="relative z-10">{f}</span>
+                <span className="relative z-10">{label}</span>
               </button>
             ))}
           </div>
@@ -142,7 +151,7 @@ export default function ProjectsPage() {
                     (e.currentTarget as HTMLElement).style.boxShadow = "none";
                   }}
                 >
-                  {/* Image placeholder */}
+                  {/* Banner */}
                   <div
                     className={`relative h-48 bg-gradient-to-br ${
                       projectGradients[i % projectGradients.length]
@@ -150,14 +159,14 @@ export default function ProjectsPage() {
                   >
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span
-                        className="text-5xl font-black opacity-20"
+                        className="text-5xl font-black opacity-15"
                         style={{ color: "var(--brand)" }}
                       >
                         {project.id}
                       </span>
                     </div>
 
-                    {/* Hover overlay with tech stack */}
+                    {/* Tech overlay on hover */}
                     <motion.div
                       initial={{ opacity: 0 }}
                       whileHover={{ opacity: 1 }}
@@ -167,12 +176,12 @@ export default function ProjectsPage() {
                         backdropFilter: "blur(8px)",
                       }}
                     >
-                      {project.tags.map((tag) => (
-                        <Badge key={tag}>{tag}</Badge>
+                      {project.tech.map((t) => (
+                        <Badge key={t}>{t}</Badge>
                       ))}
                     </motion.div>
 
-                    <div className="absolute top-3 left-3 flex gap-2">
+                    <div className="absolute top-3 left-3">
                       <span
                         className="text-xs px-2 py-0.5 rounded-full font-medium"
                         style={{
@@ -181,31 +190,24 @@ export default function ProjectsPage() {
                           backdropFilter: "blur(8px)",
                         }}
                       >
-                        {project.category}
-                      </span>
-                    </div>
-                    <div className="absolute top-3 right-3">
-                      <span
-                        className="text-xs px-2 py-0.5 rounded-full font-medium"
-                        style={{
-                          background: "rgba(0,0,0,0.4)",
-                          color: "rgba(255,255,255,0.7)",
-                          backdropFilter: "blur(8px)",
-                        }}
-                      >
-                        {project.year}
+                        {categoryLabel[project.category]}
                       </span>
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className="p-5 flex flex-col gap-3 flex-1">
-                    <h3
-                      className="font-bold text-base leading-snug"
-                      style={{ color: "var(--text-primary)" }}
-                    >
-                      {project.title}
-                    </h3>
+                    <div>
+                      <h3
+                        className="font-bold text-base leading-snug"
+                        style={{ color: "var(--text-primary)" }}
+                      >
+                        {project.title}
+                      </h3>
+                      <p className="text-xs font-semibold mt-0.5" style={{ color: "var(--brand)" }}>
+                        {project.subtitle}
+                      </p>
+                    </div>
                     <p
                       className="text-sm leading-relaxed line-clamp-3 flex-1"
                       style={{ color: "var(--text-secondary)" }}
@@ -214,30 +216,30 @@ export default function ProjectsPage() {
                     </p>
 
                     <div className="flex items-center gap-3 pt-2">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-[var(--brand)] px-3 py-1.5 rounded-lg"
-                        style={{
-                          color: "var(--text-secondary)",
-                          border: "1px solid var(--border)",
-                        }}
-                      >
-                        <Github size={13} /> Code
-                      </a>
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-[var(--brand)] px-3 py-1.5 rounded-lg"
-                        style={{
-                          color: "var(--text-secondary)",
-                          border: "1px solid var(--border)",
-                        }}
-                      >
-                        <ExternalLink size={13} /> Live
-                      </a>
+                      {project.live ? (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-[var(--brand)] px-3 py-1.5 rounded-lg"
+                          style={{
+                            color: "var(--text-secondary)",
+                            border: "1px solid var(--border)",
+                          }}
+                        >
+                          <ExternalLink size={13} /> View
+                        </a>
+                      ) : (
+                        <span
+                          className="text-xs font-medium px-3 py-1.5 rounded-lg"
+                          style={{
+                            color: "var(--text-secondary)",
+                            border: "1px solid var(--border)",
+                          }}
+                        >
+                          Enterprise / Confidential
+                        </span>
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -257,7 +259,7 @@ export default function ProjectsPage() {
             </motion.div>
           )}
 
-          {/* ── Pagination ── */}
+          {/* Pagination */}
           {totalPages > 1 && (
             <motion.div
               initial={{ opacity: 0, y: 16 }}
@@ -265,7 +267,6 @@ export default function ProjectsPage() {
               transition={{ duration: 0.4, delay: 0.2 }}
               className="flex items-center justify-center gap-2 mt-12"
             >
-              {/* Prev */}
               <button
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={page === 1}
@@ -286,27 +287,16 @@ export default function ProjectsPage() {
                 <ChevronLeft size={16} />
               </button>
 
-              {/* Page numbers */}
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
                 <button
                   key={p}
                   onClick={() => setPage(p)}
                   className="w-9 h-9 rounded-xl flex items-center justify-center text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
                   style={{
-                    background:
-                      p === page
-                        ? "linear-gradient(135deg, #41b883 0%, #2d9768 100%)"
-                        : "var(--card)",
-                    border:
-                      p === page
-                        ? "1px solid transparent"
-                        : "1px solid var(--border)",
-                    color:
-                      p === page ? "#ffffff" : "var(--text-secondary)",
-                    boxShadow:
-                      p === page
-                        ? "0 0 12px rgba(65,184,131,0.3)"
-                        : "none",
+                    background: p === page ? "linear-gradient(135deg, #41b883 0%, #2d9768 100%)" : "var(--card)",
+                    border: p === page ? "1px solid transparent" : "1px solid var(--border)",
+                    color: p === page ? "#ffffff" : "var(--text-secondary)",
+                    boxShadow: p === page ? "0 0 12px rgba(65,184,131,0.3)" : "none",
                   }}
                   aria-label={`Page ${p}`}
                   aria-current={p === page ? "page" : undefined}
@@ -315,7 +305,6 @@ export default function ProjectsPage() {
                 </button>
               ))}
 
-              {/* Next */}
               <button
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
@@ -338,12 +327,8 @@ export default function ProjectsPage() {
             </motion.div>
           )}
 
-          {/* Page info */}
           {totalPages > 1 && (
-            <p
-              className="text-center text-xs mt-3"
-              style={{ color: "var(--text-secondary)" }}
-            >
+            <p className="text-center text-xs mt-3" style={{ color: "var(--text-secondary)" }}>
               Page {page} of {totalPages} &mdash; {filtered.length} projects
             </p>
           )}

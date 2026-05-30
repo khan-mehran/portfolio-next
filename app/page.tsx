@@ -10,9 +10,9 @@ import Faq from "@/components/sections/Faq";
 import ContactBanner from "@/components/sections/ContactBanner";
 
 export const metadata: Metadata = {
-  title: "Mehran Khan — Full Stack Developer",
+  title: "Mehran Khan — Senior Frontend Developer | React.js & Next.js",
   description:
-    "Personal portfolio of Mehran Khan — full-stack developer specializing in Next.js, React, and TypeScript.",
+    "Portfolio of Mehran Khan — Senior Frontend Developer in Doha, Qatar. 5+ years building enterprise web applications for Qatar government and leading organizations using React.js, Next.js, and TypeScript.",
 };
 
 export default function HomePage() {

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import CountUp from "@/components/animations/CountUp";
-import { stats } from "@/data/skills";
+import { stats } from "@/data/stats";
 import FloatingGraphic from "@/components/FloatingGraphic";
 
 export default function Stats() {

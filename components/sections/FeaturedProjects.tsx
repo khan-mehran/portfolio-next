@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Github, ExternalLink, ArrowRight } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import Badge from "@/components/ui/Badge";
 import { featuredProjects } from "@/data/projects";
 import { FadeUp } from "@/components/animations/AnimatedText";
@@ -25,6 +25,7 @@ const projectColors = [
   "from-[#41b883]/20 to-[#2d9768]/10",
   "from-[#3dd68c]/20 to-[#00c9ff]/10",
   "from-[#2d9768]/20 to-[#41b883]/10",
+  "from-[#00c9ff]/15 to-[#41b883]/10",
 ];
 
 export default function FeaturedProjects() {
@@ -46,8 +47,8 @@ export default function FeaturedProjects() {
         </FadeUp>
         <FadeUp delay={0.2} className="text-center mb-12">
           <p className="section-subheading max-w-xl mx-auto">
-            A selection of things I&apos;ve built — from SaaS platforms to open
-            source tools.
+            A selection of enterprise and government web applications I&apos;ve led
+            and delivered in Qatar.
           </p>
         </FadeUp>
 
@@ -56,7 +57,7 @@ export default function FeaturedProjects() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {featuredProjects.map((project, i) => (
             <motion.div
@@ -81,34 +82,19 @@ export default function FeaturedProjects() {
                 (e.currentTarget as HTMLElement).style.boxShadow = "none";
               }}
             >
-              {/* Image / Gradient placeholder */}
+              {/* Gradient banner */}
               <div
-                className={`h-44 bg-gradient-to-br ${projectColors[i % 3]} relative overflow-hidden`}
+                className={`h-44 bg-gradient-to-br ${projectColors[i % 4]} relative overflow-hidden`}
               >
                 <div
                   className="absolute inset-0 flex items-center justify-center"
-                  style={{ color: "rgba(65,184,131,0.4)" }}
+                  style={{ color: "rgba(65,184,131,0.25)" }}
                 >
                   <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                    <rect
-                      x="8"
-                      y="8"
-                      width="48"
-                      height="48"
-                      rx="8"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M20 28l8 8 16-16"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
+                    <rect x="8" y="8" width="48" height="48" rx="8" stroke="currentColor" strokeWidth="2" />
+                    <path d="M20 28l8 8 16-16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                {/* Year badge */}
                 <div className="absolute top-3 right-3">
                   <span
                     className="text-xs px-2 py-0.5 rounded-full font-medium"
@@ -118,26 +104,23 @@ export default function FeaturedProjects() {
                       backdropFilter: "blur(8px)",
                     }}
                   >
-                    {project.year}
+                    {project.category === "ui" ? "UI Project" : project.category === "react" ? "React.js" : "Full Stack"}
                   </span>
                 </div>
               </div>
 
               <div className="p-5 flex flex-col gap-3">
-                {/* Category */}
-                <span
-                  className="text-xs font-semibold uppercase tracking-wider"
-                  style={{ color: "var(--brand)" }}
-                >
-                  {project.category}
-                </span>
-
-                <h3
-                  className="text-lg font-bold leading-snug"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  {project.title}
-                </h3>
+                <div>
+                  <h3
+                    className="text-lg font-bold leading-snug"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    {project.title}
+                  </h3>
+                  <p className="text-xs font-semibold mt-0.5" style={{ color: "var(--brand)" }}>
+                    {project.subtitle}
+                  </p>
+                </div>
 
                 <p
                   className="text-sm leading-relaxed line-clamp-2"
@@ -146,38 +129,35 @@ export default function FeaturedProjects() {
                   {project.description}
                 </p>
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-1.5 pt-1">
-                  {project.tags.slice(0, 3).map((tag) => (
-                    <Badge key={tag}>{tag}</Badge>
+                  {project.tech.slice(0, 4).map((t) => (
+                    <Badge key={t}>{t}</Badge>
                   ))}
-                  {project.tags.length > 3 && (
-                    <Badge>+{project.tags.length - 3}</Badge>
+                  {project.tech.length > 4 && (
+                    <Badge>+{project.tech.length - 4}</Badge>
                   )}
                 </div>
 
-                {/* Links */}
                 <div className="flex items-center gap-3 pt-2">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-[var(--brand)]"
-                    style={{ color: "var(--text-secondary)" }}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <Github size={14} /> GitHub
-                  </a>
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-[var(--brand)]"
-                    style={{ color: "var(--text-secondary)" }}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <ExternalLink size={14} /> Live Demo
-                  </a>
+                  {project.live ? (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-xs font-medium transition-colors hover:text-[var(--brand)]"
+                      style={{ color: "var(--text-secondary)" }}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <ExternalLink size={13} /> View Project
+                    </a>
+                  ) : (
+                    <span
+                      className="text-xs font-medium"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      Enterprise / Confidential
+                    </span>
+                  )}
                 </div>
               </div>
             </motion.div>

@@ -4,10 +4,10 @@ import Link from "next/link";
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-  { icon: Mail, href: "mailto:hello@mehran.dev", label: "Email" },
+  { icon: Github, href: "https://github.com/khan-mehran", label: "GitHub" },
+  { icon: Linkedin, href: "https://linkedin.com/in/kmehran", label: "LinkedIn" },
+  { icon: Twitter, href: "https://x.com/mehrankhanciit", label: "Twitter" },
+  { icon: Mail, href: "mailto:mehrankhanciit@gmail.com", label: "Email" },
 ];
 
 const footerLinks = [
@@ -52,7 +52,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-              Full-stack developer crafting performant, beautiful web
+              Frontend developer crafting performant, beautiful web
               experiences.
             </p>
           </div>

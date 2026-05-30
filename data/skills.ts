@@ -1,103 +1,79 @@
-export interface Skill {
+export interface SkillItem {
   name: string;
-  level: number;
-  category: "Frontend" | "Backend" | "Tools" | "Design";
-}
-
-export interface TechIcon {
-  name: string;
+  level: "Expert" | "Advanced" | "Proficient";
   icon: string;
 }
 
-export const skills: Skill[] = [
-  // Frontend
-  { name: "React / Next.js", level: 95, category: "Frontend" },
-  { name: "TypeScript", level: 92, category: "Frontend" },
-  { name: "Tailwind CSS", level: 93, category: "Frontend" },
-  { name: "Framer Motion", level: 85, category: "Frontend" },
-  { name: "Vue.js / Nuxt", level: 78, category: "Frontend" },
-  // Backend
-  { name: "Node.js / Express", level: 88, category: "Backend" },
-  { name: "PostgreSQL", level: 82, category: "Backend" },
-  { name: "MongoDB", level: 80, category: "Backend" },
-  { name: "GraphQL", level: 75, category: "Backend" },
-  { name: "Redis", level: 72, category: "Backend" },
-  // Tools
-  { name: "Git / GitHub", level: 95, category: "Tools" },
-  { name: "Docker / CI/CD", level: 80, category: "Tools" },
-  { name: "AWS / Vercel", level: 78, category: "Tools" },
-  { name: "Prisma / Drizzle", level: 85, category: "Tools" },
-  // Design
-  { name: "Figma", level: 82, category: "Design" },
-  { name: "UI/UX Principles", level: 80, category: "Design" },
-  { name: "Motion Design", level: 75, category: "Design" },
+export interface SkillCategory {
+  label: string;
+  color: string;
+  items: SkillItem[];
+}
+
+export const skillCategories: SkillCategory[] = [
+  {
+    label: "Frontend",
+    color: "#41b883",
+    items: [
+      { name: "React.js", level: "Expert", icon: "⚛️" },
+      { name: "Next.js", level: "Expert", icon: "▲" },
+      { name: "TypeScript", level: "Expert", icon: "TS" },
+      { name: "Tailwind CSS", level: "Expert", icon: "🌊" },
+      { name: "Redux / Zustand", level: "Advanced", icon: "⚙️" },
+      { name: "Framer Motion", level: "Advanced", icon: "◉" },
+    ],
+  },
+  {
+    label: "Backend & APIs",
+    color: "#3dd68c",
+    items: [
+      { name: "Node.js", level: "Advanced", icon: "⬡" },
+      { name: "Express.js", level: "Advanced", icon: "∞" },
+      { name: "REST APIs", level: "Expert", icon: "🔗" },
+      { name: "GraphQL", level: "Proficient", icon: "◈" },
+      { name: "PostgreSQL", level: "Advanced", icon: "🐘" },
+      { name: "MongoDB", level: "Advanced", icon: "🍃" },
+    ],
+  },
+  {
+    label: "Tools & DevOps",
+    color: "#00c9ff",
+    items: [
+      { name: "Git / GitHub", level: "Expert", icon: "⑂" },
+      { name: "Docker", level: "Advanced", icon: "🐳" },
+      { name: "Vercel", level: "Expert", icon: "▲" },
+      { name: "AWS (S3/EC2)", level: "Proficient", icon: "☁️" },
+      { name: "CI/CD", level: "Advanced", icon: "🔄" },
+      { name: "Jira / Agile", level: "Advanced", icon: "📋" },
+    ],
+  },
+  {
+    label: "Design & UX",
+    color: "#41b883",
+    items: [
+      { name: "Figma", level: "Advanced", icon: "🎨" },
+      { name: "GSAP", level: "Advanced", icon: "🎬" },
+      { name: "UI/UX Design", level: "Advanced", icon: "✦" },
+      { name: "Responsive Design", level: "Expert", icon: "📱" },
+    ],
+  },
 ];
 
-export const techIcons: TechIcon[] = [
-  { name: "React", icon: "⚛️" },
-  { name: "Next.js", icon: "▲" },
-  { name: "TypeScript", icon: "TS" },
-  { name: "Node.js", icon: "⬡" },
-  { name: "Tailwind", icon: "🌊" },
-  { name: "PostgreSQL", icon: "🐘" },
-  { name: "MongoDB", icon: "🍃" },
-  { name: "GraphQL", icon: "◈" },
-  { name: "Redis", icon: "⚡" },
-  { name: "Docker", icon: "🐳" },
-  { name: "AWS", icon: "☁️" },
-  { name: "Figma", icon: "🎨" },
-  { name: "Git", icon: "⑂" },
-  { name: "Prisma", icon: "◆" },
-  { name: "Vue.js", icon: "V" },
-  { name: "Framer", icon: "◉" },
-];
-
-export const stats = [
-  { label: "Projects Completed", value: 40, suffix: "+" },
-  { label: "Years Experience", value: 4, suffix: "+" },
-  { label: "Happy Clients", value: 15, suffix: "+" },
-  { label: "GitHub Stars", value: 300, suffix: "+" },
-];
-
-export const timeline = [
-  {
-    year: "2024",
-    title: "Senior Frontend Engineer",
-    org: "TechVentures Inc.",
-    description:
-      "Leading frontend architecture for a SaaS platform serving 50k+ users. Migrated legacy codebase to Next.js 14, reducing TTI by 60%.",
-    type: "work" as const,
-  },
-  {
-    year: "2023",
-    title: "Full Stack Developer",
-    org: "Freelance & Open Source",
-    description:
-      "Built 10+ client projects ranging from e-commerce platforms to internal tools. Contributed to several open-source Next.js and Tailwind libraries.",
-    type: "work" as const,
-  },
-  {
-    year: "2022",
-    title: "Frontend Developer",
-    org: "Digital Agency Nexus",
-    description:
-      "Developed interactive web applications for Fortune 500 clients. Specialized in React, animation, and design-to-code fidelity.",
-    type: "work" as const,
-  },
-  {
-    year: "2021",
-    title: "B.Sc. Computer Science",
-    org: "University of Technology",
-    description:
-      "Graduated with First Class Honours. Thesis on real-time collaborative web applications using WebSockets and CRDT data structures.",
-    type: "education" as const,
-  },
-  {
-    year: "2020",
-    title: "Software Engineering Intern",
-    org: "StartupLab",
-    description:
-      "First professional role — built React components, fixed production bugs, and shipped features as part of an agile team.",
-    type: "work" as const,
-  },
+export const techStack: string[] = [
+  "React.js",
+  "Next.js",
+  "TypeScript",
+  "Tailwind CSS",
+  "Node.js",
+  "PostgreSQL",
+  "MongoDB",
+  "GraphQL",
+  "Redux",
+  "Docker",
+  "AWS",
+  "Figma",
+  "Git",
+  "Vercel",
+  "Express.js",
+  "REST APIs",
 ];

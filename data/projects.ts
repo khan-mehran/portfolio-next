@@ -1,109 +1,109 @@
-export type ProjectCategory = "Frontend" | "Backend" | "Full Stack";
+export type ProjectCategory = "ui" | "react" | "fullstack";
 
 export interface Project {
   id: string;
   title: string;
+  subtitle: string;
   description: string;
-  longDescription: string;
-  image: string;
-  tags: string[];
+  tech: string[];
   category: ProjectCategory;
-  github: string;
-  live: string;
+  github?: string;
+  live?: string;
   featured: boolean;
-  year: string;
 }
 
 export const projects: Project[] = [
   {
     id: "1",
-    title: "DevFlow — SaaS Dashboard",
+    title: "GAC — General Authority of Customs",
+    subtitle: "General Authority of Customs — Doha, Qatar",
     description:
-      "A full-stack project management SaaS with real-time collaboration, Kanban boards, and analytics.",
-    longDescription:
-      "Built with Next.js 14, Prisma, PostgreSQL, and Socket.io. Features drag-and-drop Kanban boards, real-time notifications, role-based access control, and a rich analytics dashboard with Chart.js.",
-    image: "/images/project-1.jpg",
-    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind"],
-    category: "Full Stack",
-    github: "https://github.com",
-    live: "https://example.com",
+      "Built and maintained the full GAC Dashboard used by customs officials nationwide; focused on performance, accessibility, and team delivery.",
+    tech: ["HTML", "SCSS", "Bootstrap", "Git"],
+    category: "ui",
     featured: true,
-    year: "2024",
   },
   {
     id: "2",
-    title: "Aurora UI — Component Library",
+    title: "MOJ — Ministry of Justice",
+    subtitle: "Ministry of Justice, Qatar",
     description:
-      "An accessible, themeable React component library with 40+ components and Storybook docs.",
-    longDescription:
-      "Designed and built a comprehensive React component library using Radix UI primitives, Tailwind CSS, and CVA for variant management. Ships with full TypeScript support and Storybook documentation.",
-    image: "/images/project-2.jpg",
-    tags: ["React", "TypeScript", "Tailwind", "Radix UI", "Storybook"],
-    category: "Frontend",
-    github: "https://github.com",
-    live: "https://example.com",
+      "Revamped the Ministry of Justice public portal — delivered full UI modernisation, component reusability, and 100% responsive layouts.",
+    tech: ["HTML", "SCSS", "Bootstrap", "Git"],
+    category: "ui",
     featured: true,
-    year: "2024",
+    live: "https://www.moj.gov.qa"
   },
   {
     id: "3",
-    title: "Pulse API — REST & GraphQL Backend",
+    title: "QFBA — Qatar Finance & Business Academy",
+    subtitle: "Qatar Finance & Business Academy",
     description:
-      "High-performance Node.js API with REST and GraphQL endpoints, JWT auth, and Redis caching.",
-    longDescription:
-      "A scalable backend service built with Express.js, Apollo GraphQL, JWT authentication, and Redis for session management and rate limiting. Includes comprehensive Swagger documentation.",
-    image: "/images/project-3.jpg",
-    tags: ["Node.js", "Express", "GraphQL", "Redis", "MongoDB"],
-    category: "Backend",
-    github: "https://github.com",
-    live: "https://example.com",
+      "Designed and styled responsive Academy web pages, ensuring visual consistency and optimised performance across all devices.",
+    tech: ["HTML", "SCSS", "Bootstrap", "Git"],
+    category: "ui",
     featured: true,
-    year: "2024",
+    live: "https://www.qfba.edu.qa"
   },
   {
     id: "4",
-    title: "Nebula Store — E-Commerce Platform",
+    title: "Q-Debate — Qatar Debate Dashboard",
+    subtitle: "Qatar Debate Dashboard",
     description:
-      "Full-featured e-commerce platform with Stripe payments, inventory management, and admin panel.",
-    longDescription:
-      "E-commerce solution with product catalog, cart, wishlist, Stripe checkout integration, order tracking, and an admin dashboard for inventory and order management.",
-    image: "/images/project-4.jpg",
-    tags: ["Next.js", "Stripe", "Prisma", "Tailwind", "NextAuth"],
-    category: "Full Stack",
-    github: "https://github.com",
-    live: "https://example.com",
-    featured: false,
-    year: "2023",
+      "Sole frontend contributor who designed and built the complete Qatar Debate interactive dashboard from scratch — architected reusable components and delivered a fully responsive, accessible UI aligned with Qatar national branding standards.",
+    tech: ["HTML", "SCSS", "Bootstrap", "Git"],
+    category: "ui",
+    featured: true,
   },
   {
     id: "5",
-    title: "Lumina — AI Writing Assistant",
+    title: "GCO — Government Communications Office Dashboard",
+    subtitle: "Government Communications Office Dashboard, Qatar ",
     description:
-      "An AI-powered writing tool using OpenAI GPT-4 with tone control, grammar checking, and export.",
-    longDescription:
-      "Integrated OpenAI GPT-4 API for intelligent writing assistance. Features tone adjustment, grammar correction, content expansion, and PDF/DOCX export. Built with React and Zustand.",
-    image: "/images/project-5.jpg",
-    tags: ["React", "OpenAI", "Node.js", "Zustand", "Tailwind"],
-    category: "Full Stack",
-    github: "https://github.com",
-    live: "https://example.com",
+      "Collaborated within a cross-functional team to engineer the GCO Dashboard — contributed 40% of frontend components and coordinated UI/UX implementation with the designer.",
+    tech: ["HTML", "SCSS", "Bootstrap", "Git"],
+    category: "ui",
     featured: false,
-    year: "2023",
   },
   {
     id: "6",
-    title: "Cron Scheduler Service",
+    title: "Education Ministry LMS",
+    subtitle: "Ministry of Education — Qatar",
     description:
-      "Distributed job scheduler microservice with retry logic, alerting, and a monitoring UI.",
-    longDescription:
-      "A microservice for scheduling and executing background jobs at scale. Built with BullMQ, Redis, and a Next.js admin dashboard for monitoring job queues, retries, and failure alerts.",
-    image: "/images/project-6.jpg",
-    tags: ["Node.js", "BullMQ", "Redis", "Next.js", "Docker"],
-    category: "Backend",
-    github: "https://github.com",
-    live: "https://example.com",
+      "Learning Management System serving 200,000+ students and 15,000 teachers with course management, live classes, assessments, and progress analytics.",
+    tech: ["Next.js", "React", "Socket.io", "Redux", "Tailwind CSS"],
+    category: "react",
     featured: false,
-    year: "2023",
+  },
+  {
+    id: "7",
+    title: "Corporate Design System",
+    subtitle: "Applab.qa — Internal Product",
+    description:
+      "Reusable component library and design tokens system used across 10+ client projects, featuring 60+ components with full accessibility and dark-mode support.",
+    tech: ["React.js", "TypeScript", "Storybook", "Tailwind CSS", "Radix UI"],
+    category: "ui",
+    featured: false,
+  },
+  {
+    id: "8",
+    title: "Asset Management Dashboard",
+    subtitle: "Qatar Investment Authority",
+    description:
+      "High-fidelity financial dashboard for portfolio tracking, risk analysis charts, and fund allocation reporting with role-based access control.",
+    tech: ["React.js", "Recharts", "TypeScript", "Tailwind CSS", "REST APIs"],
+    category: "ui",
+    featured: false,
+  },
+  {
+    id: "9",
+    title: "Municipal Services App",
+    subtitle: "Baladiya — Qatar Municipality",
+    description:
+      "Citizen-facing web app for reporting city issues, tracking maintenance requests, and accessing municipal services with real-time status updates.",
+    tech: ["Next.js", "TypeScript", "Mapbox GL", "Tailwind CSS", "Node.js"],
+    category: "fullstack",
+    featured: false,
   },
 ];
 

@@ -4,14 +4,13 @@ import { motion } from "framer-motion";
 import { Briefcase, GraduationCap, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { FadeUp } from "@/components/animations/AnimatedText";
-import { timeline } from "@/data/skills";
+import { experience } from "@/data/experience";
 
 export default function ExperienceSection() {
-  const items = timeline.slice(0, 4);
+  const items = experience.slice(0, 4);
 
   return (
     <section className="relative py-24 overflow-hidden">
-      {/* Subtle left gradient */}
       <div
         className="absolute left-0 top-0 bottom-0 w-1/3 pointer-events-none hidden lg:block"
         style={{
@@ -23,7 +22,6 @@ export default function ExperienceSection() {
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
 
-          {/* Left: heading + description */}
           <div className="lg:col-span-2 lg:sticky lg:top-28">
             <FadeUp>
               <p
@@ -43,21 +41,17 @@ export default function ExperienceSection() {
                 className="text-sm leading-7 mb-6"
                 style={{ color: "var(--text-secondary)" }}
               >
-                Over 4 years of professional experience building production
-                applications — from startups to enterprise clients.
+                5+ years of professional experience delivering production-grade
+                web applications for Qatar government and enterprise clients.
               </p>
             </FadeUp>
             <FadeUp delay={0.3}>
-              <Link
-                href="/about"
-                className="btn-outline inline-flex text-sm"
-              >
+              <Link href="/about" className="btn-outline inline-flex text-sm">
                 Full Story <ArrowRight size={14} />
               </Link>
             </FadeUp>
           </div>
 
-          {/* Right: timeline cards */}
           <div className="lg:col-span-3 flex flex-col gap-0">
             {items.map((item, i) => (
               <motion.div
@@ -68,7 +62,6 @@ export default function ExperienceSection() {
                 transition={{ duration: 0.5, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className="relative flex gap-5 pb-8 last:pb-0"
               >
-                {/* Vertical line */}
                 {i < items.length - 1 && (
                   <div
                     className="absolute left-5 top-10 bottom-0 w-px"
@@ -79,7 +72,6 @@ export default function ExperienceSection() {
                   />
                 )}
 
-                {/* Icon node */}
                 <div
                   className="relative z-10 w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
                   style={{
@@ -96,9 +88,8 @@ export default function ExperienceSection() {
                   )}
                 </div>
 
-                {/* Card */}
                 <div
-                  className="flex-1 rounded-xl p-5 transition-all duration-300 group cursor-default"
+                  className="flex-1 rounded-xl p-5 transition-all duration-300 cursor-default"
                   style={{
                     background: "var(--card)",
                     border: "1px solid var(--border)",
@@ -120,13 +111,13 @@ export default function ExperienceSection() {
                         className="font-bold text-base leading-snug"
                         style={{ color: "var(--text-primary)" }}
                       >
-                        {item.title}
+                        {item.role}
                       </h3>
                       <p
                         className="text-sm font-medium"
                         style={{ color: "var(--brand)" }}
                       >
-                        {item.org}
+                        {item.company}
                       </p>
                     </div>
                     <span
@@ -137,14 +128,14 @@ export default function ExperienceSection() {
                         border: "1px solid rgba(65,184,131,0.2)",
                       }}
                     >
-                      {item.year}
+                      {item.period}
                     </span>
                   </div>
                   <p
                     className="text-sm leading-6"
                     style={{ color: "var(--text-secondary)" }}
                   >
-                    {item.description}
+                    {item.highlights[0]}
                   </p>
                 </div>
               </motion.div>

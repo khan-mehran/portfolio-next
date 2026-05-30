@@ -1,60 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, Code2, ExternalLink } from "lucide-react";
+import { Briefcase, GraduationCap, Code2 } from "lucide-react";
 import FloatingGraphic from "@/components/FloatingGraphic";
 import { FadeUp } from "@/components/animations/AnimatedText";
-import { timeline } from "@/data/skills";
-
-/* ── Tech stack data ── */
-const techCategories = [
-  {
-    label: "Frontend",
-    color: "#41b883",
-    items: [
-      { name: "React", level: "Expert", icon: "⚛️" },
-      { name: "Next.js", level: "Expert", icon: "▲" },
-      { name: "TypeScript", level: "Expert", icon: "𝙏𝙎" },
-      { name: "Tailwind CSS", level: "Expert", icon: "🌊" },
-      { name: "Framer Motion", level: "Advanced", icon: "◉" },
-      { name: "Vue.js", level: "Proficient", icon: "V" },
-    ],
-  },
-  {
-    label: "Backend",
-    color: "#3dd68c",
-    items: [
-      { name: "Node.js", level: "Expert", icon: "⬡" },
-      { name: "Express", level: "Expert", icon: "∞" },
-      { name: "PostgreSQL", level: "Advanced", icon: "🐘" },
-      { name: "MongoDB", level: "Advanced", icon: "🍃" },
-      { name: "GraphQL", level: "Proficient", icon: "◈" },
-      { name: "Redis", level: "Proficient", icon: "⚡" },
-    ],
-  },
-  {
-    label: "Tools & DevOps",
-    color: "#00c9ff",
-    items: [
-      { name: "Git / GitHub", level: "Expert", icon: "⑂" },
-      { name: "Docker", level: "Advanced", icon: "🐳" },
-      { name: "AWS", level: "Proficient", icon: "☁️" },
-      { name: "Vercel", level: "Expert", icon: "▲" },
-      { name: "Prisma", level: "Advanced", icon: "◆" },
-      { name: "CI/CD", level: "Advanced", icon: "🔄" },
-    ],
-  },
-  {
-    label: "Design",
-    color: "#41b883",
-    items: [
-      { name: "Figma", level: "Advanced", icon: "🎨" },
-      { name: "GSAP", level: "Advanced", icon: "🎬" },
-      { name: "UI/UX", level: "Advanced", icon: "✦" },
-      { name: "Storybook", level: "Proficient", icon: "📚" },
-    ],
-  },
-];
+import { skillCategories, type SkillItem } from "@/data/skills";
+import { experience, type ExperienceEntry } from "@/data/experience";
 
 const levelConfig: Record<string, { dots: number; color: string; bg: string }> = {
   Expert:    { dots: 5, color: "#41b883", bg: "rgba(65,184,131,0.15)" },
@@ -62,7 +13,7 @@ const levelConfig: Record<string, { dots: number; color: string; bg: string }> =
   Proficient:{ dots: 3, color: "#00c9ff", bg: "rgba(0,201,255,0.1)" },
 };
 
-function TechCard({ name, level, icon }: { name: string; level: string; icon: string }) {
+function TechCard({ name, level, icon }: SkillItem) {
   const cfg = levelConfig[level] ?? levelConfig["Proficient"];
   return (
     <motion.div
@@ -80,33 +31,29 @@ function TechCard({ name, level, icon }: { name: string; level: string; icon: st
         el.style.boxShadow = "none";
       }}
     >
-      {/* Icon circle */}
       <div
         className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-bold flex-shrink-0"
         style={{ background: cfg.bg, color: cfg.color }}
       >
         {icon}
       </div>
-      {/* Name */}
       <span
         className="text-xs font-semibold text-center leading-tight"
         style={{ color: "var(--text-primary)" }}
       >
         {name}
       </span>
-      {/* Proficiency dots */}
       <div className="flex items-center gap-1">
         {Array.from({ length: 5 }).map((_, i) => (
           <span
             key={i}
             className="w-1.5 h-1.5 rounded-full transition-all duration-200"
             style={{
-              background: i < cfg.dots ? cfg.color : "rgba(255,255,255,0.1)",
+              background: i < cfg.dots ? cfg.color : "rgba(128,128,128,0.2)",
             }}
           />
         ))}
       </div>
-      {/* Level label */}
       <span
         className="text-[10px] font-medium px-2 py-0.5 rounded-full"
         style={{ background: cfg.bg, color: cfg.color }}
@@ -121,7 +68,7 @@ function TimelineItem({
   item,
   index,
 }: {
-  item: (typeof timeline)[number];
+  item: ExperienceEntry;
   index: number;
 }) {
   const isLeft = index % 2 === 0;
@@ -135,7 +82,7 @@ function TimelineItem({
     >
       <div className={`flex-1 ${isLeft ? "md:text-right" : "md:text-left"}`}>
         <div
-          className="rounded-xl p-5 card-glass-hover"
+          className="rounded-xl p-5"
           style={{ background: "var(--card)", border: "1px solid var(--border)" }}
         >
           <div className="flex items-center gap-2 mb-2 flex-wrap">
@@ -143,21 +90,25 @@ function TimelineItem({
               className="text-xs px-2 py-0.5 rounded-full font-semibold"
               style={{ background: "rgba(65,184,131,0.12)", color: "var(--brand)" }}
             >
-              {item.year}
+              {item.period}
             </span>
             <span style={{ color: "var(--brand)" }}>
               {item.type === "work" ? <Briefcase size={12} /> : <GraduationCap size={12} />}
             </span>
           </div>
           <h3 className="font-bold text-base leading-snug" style={{ color: "var(--text-primary)" }}>
-            {item.title}
+            {item.role}
           </h3>
           <p className="text-sm font-medium mb-2" style={{ color: "var(--brand)" }}>
-            {item.org}
+            {item.company}
           </p>
-          <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-            {item.description}
-          </p>
+          <ul className="space-y-1">
+            {item.highlights.map((h, i) => (
+              <li key={i} className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                {h}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <div className="flex-shrink-0 flex flex-col items-center">
@@ -189,15 +140,14 @@ export default function AboutPage() {
           </FadeUp>
           <FadeUp delay={0.1}>
             <h1 className="section-heading mb-6">
-              Passionate about{" "}
-              <span className="gradient-text">craft &amp; code</span>
+              Building <span className="gradient-text">Qatar&apos;s digital</span> future
             </h1>
           </FadeUp>
           <FadeUp delay={0.2}>
             <p className="max-w-2xl text-base sm:text-lg leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-              I&apos;m Mehran — a full-stack developer with 4+ years of experience building products people love.
-              I care deeply about performance, accessibility, and delightful user experiences. When I&apos;m not
-              coding, I&apos;m contributing to open source, writing about web development, or sketching UI ideas in Figma.
+              I&apos;m Mehran — a Senior Frontend Developer based in Doha, Qatar, with 5+ years of experience
+              delivering enterprise-grade web applications for government ministries and leading organizations.
+              I care deeply about performance, accessibility, and building UI systems that scale.
             </p>
           </FadeUp>
         </div>
@@ -237,10 +187,10 @@ export default function AboutPage() {
                 </h2>
               </FadeUp>
               {[
-                { label: "Location", value: "Remote / Worldwide" },
-                { label: "Focus", value: "Full Stack Web Development" },
-                { label: "Experience", value: "4+ Years Professional" },
-                { label: "Education", value: "B.Sc. Computer Science" },
+                { label: "Location", value: "Doha, Qatar" },
+                { label: "Focus", value: "React.js & Next.js Frontend" },
+                { label: "Experience", value: "5+ Years Professional" },
+                { label: "Education", value: "B.Sc. Computer Science — CIIT" },
                 { label: "Email", value: "mehrankhanciit@gmail.com" },
                 { label: "Availability", value: "Open to Opportunities" },
               ].map(({ label, value }, i) => (
@@ -260,7 +210,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Modern Tech Stack Grid ── */}
+      {/* Tech Stack Grid */}
       <section className="relative py-20 overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
@@ -286,10 +236,9 @@ export default function AboutPage() {
           </FadeUp>
 
           <div className="flex flex-col gap-10">
-            {techCategories.map((cat, ci) => (
+            {skillCategories.map((cat, ci) => (
               <FadeUp key={cat.label} delay={ci * 0.08}>
                 <div>
-                  {/* Category header */}
                   <div className="flex items-center gap-3 mb-5">
                     <span
                       className="w-2.5 h-2.5 rounded-full"
@@ -307,7 +256,6 @@ export default function AboutPage() {
                     />
                   </div>
 
-                  {/* Tech cards grid */}
                   <motion.div
                     variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }}
                     initial="hidden"
@@ -332,7 +280,6 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* Legend */}
           <FadeUp delay={0.3}>
             <div className="flex items-center justify-center gap-6 mt-10 pt-6 border-t" style={{ borderColor: "var(--border)" }}>
               {Object.entries(levelConfig).map(([label, cfg]) => (
@@ -342,7 +289,7 @@ export default function AboutPage() {
                       <span
                         key={i}
                         className="w-1.5 h-1.5 rounded-full"
-                        style={{ background: i < cfg.dots ? cfg.color : "rgba(255,255,255,0.1)" }}
+                        style={{ background: i < cfg.dots ? cfg.color : "rgba(128,128,128,0.2)" }}
                       />
                     ))}
                   </div>
@@ -371,7 +318,7 @@ export default function AboutPage() {
           <div className="relative">
             <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 hidden md:block timeline-line" />
             <div className="flex flex-col gap-8">
-              {timeline.map((item, i) => (
+              {experience.map((item, i) => (
                 <TimelineItem key={i} item={item} index={i} />
               ))}
             </div>
