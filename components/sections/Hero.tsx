@@ -25,7 +25,7 @@ const roles = [
 const socials = [
   { icon: Github,   href: "https://github.com/khan-mehran",                  label: "GitHub"   },
   { icon: Linkedin, href: "https://www.linkedin.com/in/kmehran/",                 label: "LinkedIn" },
-  { icon: Twitter,  href: "https://twitter.com",                  label: "Twitter"  },
+  { icon: Twitter,  href: "https://x.com/mehrankhanciit",                  label: "Twitter"  },
   { icon: Mail,     href: "mailto:mehrankhanciit@gmail.com",       label: "Email"    },
 ];
 

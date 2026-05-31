@@ -32,7 +32,7 @@ export const projects: Project[] = [
     tech: ["HTML", "SCSS", "Bootstrap", "Git"],
     category: "ui",
     featured: true,
-    live: "https://www.moj.gov.qa"
+    live: "https://www.moj.gov.qa",
   },
   {
     id: "3",
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     tech: ["HTML", "SCSS", "Bootstrap", "Git"],
     category: "ui",
     featured: true,
-    live: "https://www.qfba.edu.qa"
+    live: "https://www.qfba.edu.qa",
   },
   {
     id: "4",
@@ -67,22 +67,23 @@ export const projects: Project[] = [
   },
   {
     id: "6",
-    title: "Education Ministry LMS",
-    subtitle: "Ministry of Education — Qatar",
+    title: "QOC - Chatbot",
+    subtitle: "Qatar Olympic Committee",
     description:
-      "Learning Management System serving 200,000+ students and 15,000 teachers with course management, live classes, assessments, and progress analytics.",
-    tech: ["Next.js", "React", "Socket.io", "Redux", "Tailwind CSS"],
+      "Built the frontend interface for the QOC Chatbot — developed a responsive, accessible conversational UI with real-time message rendering and seamless API integration.",
+    tech: ["HTML", "React", "Socket.io", "Redux", "Bootstrap", "Git"],
     category: "react",
     featured: false,
+    live: "https://avatar.olympic.qa/"
   },
   {
     id: "7",
-    title: "Corporate Design System",
-    subtitle: "Applab.qa — Internal Product",
+    title: "MOJ Chatbot",
+    subtitle: "Ministry of Justice — Conversational UI",
     description:
-      "Reusable component library and design tokens system used across 10+ client projects, featuring 60+ components with full accessibility and dark-mode support.",
-    tech: ["React.js", "TypeScript", "Storybook", "Tailwind CSS", "Radix UI"],
-    category: "ui",
+      "Developed the MOJ Chatbot frontend — delivered a clean, government-branded chat interface with real-time responses, input validation, and full mobile responsiveness.",
+    tech: ["HTML", "React", "Socket.io", "Redux", "Bootstrap", "Git"],
+    category: "react",
     featured: false,
   },
   {

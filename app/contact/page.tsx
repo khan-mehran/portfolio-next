@@ -22,9 +22,9 @@ type FormData = z.infer<typeof schema>;
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: "mehrankhanciit@gmail.com", href: "mailto:mehrankhanciit@gmail.com" },
-  { icon: Github, label: "GitHub", value: "@mehrandev", href: "https://github.com" },
-  { icon: Linkedin, label: "LinkedIn", value: "Mehran Khan", href: "https://linkedin.com" },
-  { icon: MapPin, label: "Location", value: "Remote / Worldwide", href: null },
+  { icon: Github, label: "GitHub", value: "@khan-mehran", href: "https://github.com/khan-mehran" },
+  { icon: Linkedin, label: "LinkedIn", value: "Mehran Khan", href: "https://linkedin.com/in/kmehran" },
+  { icon: MapPin, label: "Location", value: "Doha / Worldwide", href: null },
 ];
 
 const socialLinks = [

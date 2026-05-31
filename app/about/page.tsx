@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, Code2 } from "lucide-react";
+import { Briefcase, GraduationCap } from "lucide-react";
 import FloatingGraphic from "@/components/FloatingGraphic";
 import { FadeUp } from "@/components/animations/AnimatedText";
 import { skillCategories, type SkillItem } from "@/data/skills";
@@ -161,14 +162,15 @@ export default function AboutPage() {
               <div className="relative max-w-sm mx-auto">
                 <div
                   className="aspect-[4/5] rounded-2xl overflow-hidden"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(65,184,131,0.15) 0%, rgba(45,151,104,0.1) 100%)",
-                    border: "1px solid rgba(65,184,131,0.25)",
-                  }}
+                  style={{ border: "1px solid rgba(65,184,131,0.25)" }}
                 >
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Code2 size={80} style={{ color: "rgba(65,184,131,0.3)" }} />
-                  </div>
+                  <Image
+                    src="/profile.jpg"
+                    alt="Mehran Khan"
+                    fill
+                    className="object-cover object-top rounded-2xl"
+                    sizes="(max-width: 768px) 100vw, 384px"
+                  />
                 </div>
                 <div
                   className="absolute -inset-1 rounded-2xl -z-10"
@@ -188,9 +190,9 @@ export default function AboutPage() {
               </FadeUp>
               {[
                 { label: "Location", value: "Doha, Qatar" },
-                { label: "Focus", value: "React.js & Next.js Frontend" },
+                { label: "Focus", value: "UI Developement, React.js & Next.js Frontend" },
                 { label: "Experience", value: "5+ Years Professional" },
-                { label: "Education", value: "B.Sc. Computer Science — CIIT" },
+                { label: "Education", value: "B.Sc. Computer Science — CUI" },
                 { label: "Email", value: "mehrankhanciit@gmail.com" },
                 { label: "Availability", value: "Open to Opportunities" },
               ].map(({ label, value }, i) => (
