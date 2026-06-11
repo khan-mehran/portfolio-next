@@ -14,33 +14,37 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Mehran Khan — Full Stack Developer",
+    default: "Mehran Khan — Senior Frontend Developer",
     template: "%s | Mehran Khan",
   },
   description:
-    "Full-stack developer specializing in Next.js, React, TypeScript, and Node.js. Building fast, beautiful, and accessible web applications.",
+    "Senior Frontend Developer in Doha, Qatar. 5+ years building enterprise web applications for Qatar government and leading organizations using React.js, Next.js, and TypeScript.",
   keywords: [
-    "Full Stack Developer",
+    "Senior Frontend Developer",
+    "React.js",
     "Next.js",
-    "React",
     "TypeScript",
-    "Frontend",
+    "Qatar",
     "Portfolio",
   ],
   authors: [{ name: "Mehran Khan" }],
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "Mehran Khan Portfolio",
-    title: "Mehran Khan — Full Stack Developer",
+    title: "Mehran Khan — Senior Frontend Developer",
     description:
-      "Building fast, beautiful, and accessible web applications with Next.js, React, and TypeScript.",
+      "Senior Frontend Developer in Doha, Qatar. Building enterprise web apps with React.js and Next.js.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mehran Khan — Full Stack Developer",
+    title: "Mehran Khan — Senior Frontend Developer",
     description:
-      "Building fast, beautiful, and accessible web applications.",
+      "Senior Frontend Developer in Doha, Qatar. React.js & Next.js specialist.",
   },
 };
 
