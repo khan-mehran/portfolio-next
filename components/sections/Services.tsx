@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import {
   Monitor,
-  Server,
-  Palette,
+  Layers,
+  Smartphone,
   Zap,
   GitBranch,
   BrainCircuit,
@@ -22,20 +22,20 @@ const services = [
     glow: "rgba(65,184,131,0.15)",
   },
   {
-    icon: Server,
-    title: "Backend Development",
+    icon: Layers,
+    title: "Component Systems",
     description:
-      "Scalable REST & GraphQL APIs with Node.js, database design, auth systems, and cloud deployment.",
-    tags: ["Node.js", "Express", "GraphQL", "PostgreSQL"],
+      "Scalable, reusable React component libraries built with a design-token foundation — consistent, accessible, and ready for any product.",
+    tags: ["React", "TypeScript", "Storybook", "Design Tokens"],
     gradient: "from-[#3dd68c]/20 to-[#00c9ff]/10",
     glow: "rgba(61,214,140,0.15)",
   },
   {
-    icon: Palette,
-    title: "UI/UX Design",
+    icon: Smartphone,
+    title: "Responsive & Accessible UI",
     description:
-      "Clean, modern interface design in Figma — from wireframes to high-fidelity prototypes ready for handoff.",
-    tags: ["Figma", "Prototyping", "Design Systems", "Accessibility"],
+      "Pixel-perfect, fully responsive layouts engineered for all screen sizes — built to WCAG standards with cross-browser compatibility.",
+    tags: ["Responsive", "SCSS", "Bootstrap", "WCAG 2.1"],
     gradient: "from-[#00c9ff]/15 to-[#41b883]/10",
     glow: "rgba(0,201,255,0.12)",
   },

@@ -8,34 +8,26 @@ import { FadeUp } from "@/components/animations/AnimatedText";
 const testimonials = [
   {
     quote:
-      "Mehran delivered outstanding work — clean code, great communication, and a real eye for design. Our dashboard went from concept to production in record time.",
-    name: "Sarah Mitchell",
-    role: "CTO, TechVentures Inc.",
-    initials: "SM",
+      "I am pleased to recommend Mehran for their outstanding skills in React.js development. As a developer, Mehran has demonstrated exceptional proficiency in building complex user interfaces with React.js. Their deep understanding of the React.js framework, along with their ability to write clean and efficient code, have resulted in impressive web applications that are fast, responsive, and user-friendly. Mehran has a keen eye for detail, and is adept at debugging and troubleshooting complex issues. They have a collaborative and communicative approach to work, always seeking feedback and ideas to ensure that the final product meets or exceeds expectations.",
+    name: "Amir Khan",
+    role: "React Developer at Technology Rivers",
+    initials: "AK",
     rating: 5,
   },
   {
     quote:
-      "Working with Mehran was a game-changer for our startup. He not only built a blazing-fast Next.js frontend but also suggested architectural improvements that saved us weeks of tech debt.",
-    name: "James Caldwell",
-    role: "Founder, Nebula Labs",
-    initials: "JC",
+      "I highly recommend Mehran Khan for their exceptional skills in ReactJS. Having worked closely with them during our university days, I have witnessed their dedication, problem-solving abilities, and passion for web development firsthand. Their proficiency in ReactJS coupled with their strong work ethic make them a valuable asset to any team. With their attention to detail and ability to deliver high-quality solutions, Mehran Khan would be a valuable addition to any organization looking to excel in front-end development projects.",
+    name: "M. Usama Bugvi",
+    role: "Android Developer at NextTier",
+    initials: "UB",
     rating: 5,
   },
   {
     quote:
-      "Exceptional attention to detail and a genuine passion for quality. Mehran rebuilt our entire component library from scratch — it's now one of the most polished systems I've seen.",
-    name: "Priya Sharma",
-    role: "Lead Designer, PixelCraft",
-    initials: "PS",
-    rating: 5,
-  },
-  {
-    quote:
-      "We hired Mehran to optimize our Node.js API and he reduced our response times by 70%. Knowledgeable, professional, and delivered ahead of schedule.",
-    name: "Lucas Fontaine",
-    role: "VP Engineering, DataStream",
-    initials: "LF",
+      "Mehran Khan is an exceptional frontend developer with whom I had the pleasure of working at Codistan and Vaultspay. His ability to create user-friendly and visually appealing interfaces is impressive. Mehran is not only technically skilled but also a great team player who consistently delivers high-quality work. I highly recommend him for any project that requires a dedicated and talented frontend developer.",
+    name: "Muhammad Saqib Raheem",
+    role: "Software Engineer at Systems Limited",
+    initials: "SR",
     rating: 5,
   },
 ];
@@ -103,7 +95,7 @@ export default function TestimonialSlider() {
         >
           {/* Card */}
           <div
-            className="relative rounded-2xl p-8 sm:p-10 overflow-hidden min-h-[280px] flex flex-col justify-between"
+            className="relative rounded-2xl p-8 sm:p-10 overflow-hidden flex flex-col justify-between"
             style={{
               background: "var(--card)",
               border: "1px solid var(--border)",
@@ -151,7 +143,7 @@ export default function TestimonialSlider() {
                 </div>
 
                 <blockquote
-                  className="text-lg sm:text-xl leading-8 font-medium italic"
+                  className="text-base sm:text-lg leading-8 font-medium italic line-clamp-3"
                   style={{ color: "var(--text-primary)" }}
                 >
                   &ldquo;{t.quote}&rdquo;
