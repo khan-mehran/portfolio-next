@@ -192,7 +192,7 @@ export default function Hero() {
             style={{ color: "var(--text-secondary)" }}
           >
             Senior Frontend Developer with 5+ years building enterprise web
-            applications for Qatar government and leading organizations.
+            applications for government and leading organizations worldwide.
             Specialized in React.js, Next.js, and scalable UI systems.
           </motion.p>
 

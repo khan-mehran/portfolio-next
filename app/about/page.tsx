@@ -141,13 +141,13 @@ export default function AboutPage() {
           </FadeUp>
           <FadeUp delay={0.1}>
             <h1 className="section-heading mb-6">
-              Building <span className="gradient-text">Qatar&apos;s digital</span> future
+              Crafting <span className="gradient-text">interfaces that</span> matter
             </h1>
           </FadeUp>
           <FadeUp delay={0.2}>
             <p className="max-w-2xl text-base sm:text-lg leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-              I&apos;m Mehran — a Senior Frontend Developer based in Doha, Qatar, with 5+ years of experience
-              delivering enterprise-grade web applications for government ministries and leading organizations.
+              I&apos;m Mehran — a Senior Frontend Developer with 5+ years of experience delivering
+              enterprise-grade web applications for government and leading organizations worldwide.
               I care deeply about performance, accessibility, and building UI systems that scale.
             </p>
           </FadeUp>
